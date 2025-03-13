@@ -1,14 +1,21 @@
 from telegram import Update
-from telegram.ext import Updater, CommandHandler, CallbackContext
+from telegram.ext import Application, CommandHandler, CallbackContext
+import os
 
-TOKEN = "7416695404:AAE18OU0B0BfJf3E8wAFpHo9psJ8TgwBZbg"
+# Токен бота (берем из переменных окружения)
+TOKEN = os.getenv("TOKEN")
 
-def start(update: Update, context: CallbackContext):
-    update.message.reply_text("Привет! Бот работает!")
+# Функция обработки команды /start
+async def start(update: Update, context: CallbackContext):
+    await update.message.reply_text("Привет! Бот работает!")
 
-updater = Updater(TOKEN, use_context=True)
-dp = updater.dispatcher
-dp.add_handler(CommandHandler("start", start))
+# Создаем приложение (новый Updater)
+application = Application.builder().token(TOKEN).build()
 
-updater.start_polling()
-updater.idle()
+# Добавляем обработчик команды /start
+application.add_handler(CommandHandler("start", start))
+
+# Запуск бота
+if _name_ == "_main_":
+    print("Бот запущен...")
+    application.run_polling()
