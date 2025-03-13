@@ -1,9 +1,8 @@
 from telegram import Update
 from telegram.ext import Application, CommandHandler, CallbackContext
-import os
 
-# Токен бота (берем из переменных окружения)
-TOKEN = os.getenv("TOKEN")
+# Вставь свой токен сюда
+TOKEN = "ТВОЙ_ТОКЕН"
 
 # Функция обработки команды /start
 async def start(update: Update, context: CallbackContext):
@@ -16,6 +15,6 @@ application = Application.builder().token(TOKEN).build()
 application.add_handler(CommandHandler("start", start))
 
 # Запуск бота
-if _name_ == "_main_":
+if _name_ == "_main":  # Исправлено (было _name, должно быть _name_)
     print("Бот запущен...")
     application.run_polling()
