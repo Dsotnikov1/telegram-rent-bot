@@ -15,7 +15,7 @@ application = Application.builder().token(TOKEN).build()
 application.add_handler(CommandHandler("start", start))
 
 # Запуск бота
-if name == "__main__":  # ВАЖНО! Два подчеркивания с обеих сторон!
+if __name__ == "__main__":  # ВАЖНО! Два подчеркивания с обеих сторон!
     print("Бот запущен...")
     application.run_polling()
 from telegram import Update
