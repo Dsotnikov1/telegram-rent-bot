@@ -15,6 +15,6 @@ application = Application.builder().token(TOKEN).build()
 application.add_handler(CommandHandler("start", start))
 
 # Запуск бота
-if _name_ == "_main":  # Исправлено (было _name, должно быть _name_)
+if name == "__main__":  # Здесь исправлено!
     print("Бот запущен...")
     application.run_polling()
